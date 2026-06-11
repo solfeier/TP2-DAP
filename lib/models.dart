@@ -1,6 +1,7 @@
 class User {
   String username;
   String password;
+  
   User({required this.username, required this.password});
 }
 
@@ -9,6 +10,7 @@ class Product {
   String description;
   double price;
   int quantity;
+  
   Product({
     required this.name,
     required this.description,
