@@ -27,18 +27,24 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              
               const SizedBox(height: 100),
+              
               TextField(
                 controller: usuarioController,
                 decoration: const InputDecoration(labelText: "Usuario"),
               ),
+
               const SizedBox(height: 20),
+              
               TextField(
                 controller: passwordController,
                 obscureText: true,
                 decoration: const InputDecoration(labelText: "Contraseña"),
               ),
+              
               const SizedBox(height: 20),
+
               ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -59,11 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text("Ingresar"),
               ),
+
               const SizedBox(height: 20),
-              Text(
-                mensaje,
-                style: const TextStyle(fontSize: 18, color: Colors.red),
-              ),
+
+              Text(mensaje,style: const TextStyle(fontSize: 18, color: Colors.red),),
             ],
           ),
         ),
