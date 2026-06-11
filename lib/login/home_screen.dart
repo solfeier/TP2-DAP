@@ -14,8 +14,6 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController descripcionController = TextEditingController();
   TextEditingController precioController = TextEditingController();
   TextEditingController cantidadController = TextEditingController();
-
-  // Variables para almacenar los extremos sin usar listas
   Product? productoMasCaro;
   Product? productoMasBarato;
   Product? productoMayorCantidad;
