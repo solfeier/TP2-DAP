@@ -38,24 +38,33 @@ class _HomeScreenState extends State<HomeScreen> {
 
       Product nuevo = Product(name: nombre, description: descripcion, price: precio, quantity: cantidad);
 
-      // Si es el primer producto cargado
       if (totalProductos == 0) {
         productoMasCaro = nuevo;
         productoMasBarato = nuevo;
         productoMayorCantidad = nuevo;
         productoMenorCantidad = nuevo;
       } else {
-        // Validaciones en tiempo real
-        if (nuevo.price > productoMasCaro!.price) productoMasCaro = nuevo;
-        if (nuevo.price < productoMasBarato!.price) productoMasBarato = nuevo;
-        if (nuevo.quantity > productoMayorCantidad!.quantity) productoMayorCantidad = nuevo;
-        if (nuevo.quantity < productoMenorCantidad!.quantity) productoMenorCantidad = nuevo;
+        
+        if (nuevo.price > productoMasCaro!.price){
+          productoMasCaro = nuevo;
+        } 
+
+        if (nuevo.price < productoMasBarato!.price){
+          productoMasBarato = nuevo;
+        }
+
+        if (nuevo.quantity > productoMayorCantidad!.quantity){
+          productoMayorCantidad = nuevo;
+        }
+
+        if (nuevo.quantity < productoMenorCantidad!.quantity){
+          productoMenorCantidad = nuevo;
+        }
       }
 
       sumaPrecios += nuevo.price;
       totalProductos++;
 
-      // Limpieza de campos
       nombreController.clear();
       descripcionController.clear();
       precioController.clear();
@@ -77,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     double promedio = sumaPrecios / totalProductos;
 
-    // Enviamos los datos procesados mediante un mapa
     appRoutes.push('/results', extra: {
       'masCaro': productoMasCaro,
       'masBarato': productoMasBarato,
@@ -98,16 +106,22 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-              const Text(
-                "Carga de Productos",
-                style: TextStyle(fontSize: 28, color: Colors.black, fontWeight: FontWeight.bold),
-              ),
+
+              const Text("Carga de Productos",style: TextStyle(fontSize: 28, color: Colors.black, fontWeight: FontWeight.bold),),
+              
               const SizedBox(height: 20),
+              
               TextField(controller: nombreController, decoration: const InputDecoration(labelText: "Nombre")),
+              
               TextField(controller: descripcionController, decoration: const InputDecoration(labelText: "Descripción")),
+              
               TextField(controller: precioController, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: "Precio")),
+              
               TextField(controller: cantidadController, keyboardType: TextInputType.number, decoration: const InputDecoration(labelText: "Cantidad")),
+              
+              
               const SizedBox(height: 30),
+              
               ElevatedButton(
                 onPressed: ingresarProducto,
                 child: const Text("Ingresar producto"),
